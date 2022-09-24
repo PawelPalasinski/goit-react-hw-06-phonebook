@@ -1,5 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import phoneBookReducer from './reducer';
 
-export const store = configureStore({
-  reducer: {},
+const rootReducer = combineReducers({
+  contacts: phoneBookReducer,
 });
+
+const store = configureStore({ reducer: rootReducer });
+
+export default store;
