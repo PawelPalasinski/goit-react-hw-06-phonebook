@@ -1,10 +1,15 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import phoneBookReducer from './reducer';
+import { configureStore } from '@reduxjs/toolkit';
+import contacts from './contacts';
+import filter from './filter';
 
-const rootReducer = combineReducers({
-  contacts: phoneBookReducer,
+const rootReducer = {
+  contacts,
+  filter,
+};
+
+const store = configureStore({
+  reducer: rootReducer,
+  devTools: process.env.NODE_ENV !== 'production',
 });
-
-const store = configureStore({ reducer: rootReducer });
 
 export default store;

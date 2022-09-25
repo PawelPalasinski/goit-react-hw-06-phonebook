@@ -1,21 +1,24 @@
+import { useDispatch } from 'react-redux';
+import { filterContacts } from '../../redux/filter';
 import styles from './Filter.module.css';
-import PropTypes from 'prop-types';
 
-const Filter = ({ filter, onFilter }) => {
+const Filter = () => {
+  const dispatch = useDispatch();
+
+  const changeFilter = e => {
+    const value = e.target.value.toLowerCase();
+    dispatch(filterContacts(value));
+  };
+
   return (
-    <input className={styles.filter}
+    <input
+      className={styles.filter}
       type="text"
       name="filter"
-      value={filter}
-      onChange={onFilter}
+      onChange={changeFilter}
       placeholder="Enter name for Search"
     />
   );
-};
-
-Filter.propTypes = {
-  onSufilterbmit: PropTypes.string,
-  onChange: PropTypes.func,
 };
 
 export default Filter;
