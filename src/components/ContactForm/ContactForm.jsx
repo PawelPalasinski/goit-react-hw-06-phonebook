@@ -1,8 +1,5 @@
 import { useState } from 'react';
-import {
-  useDispatch,
-  useSelector
-} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContacts } from 'redux/contacts';
 import { nanoid } from 'nanoid';
 import styles from './ContactForm.module.css';
@@ -11,31 +8,15 @@ const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
+  const getContacts = state => state.contacts;
+  const contacts = useSelector(getContacts);
 
-  // const handleChange = e => {
-  //   const { name, value } = e.currentTarget;
-  //   if (name === 'name') {
-  //     setName(value);
-  //   } else if (name === 'number') {
-  //     setNumber(value);
-  //   }
-  // };
-
-    const handleChange = e => {
+  const handleChange = e => {
     const { name, value } = e.currentTarget;
-
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-
-      case 'number':
-        setNumber(value);
-        break;
-
-      default:
-        break;
+    if (name === 'name') {
+      setName(value);
+    } else if (name === 'number') {
+      setNumber(value);
     }
   };
 
@@ -49,7 +30,7 @@ const ContactForm = () => {
     reset();
   };
 
-    const reset = () => {
+  const reset = () => {
     setName('');
     setNumber('');
   };
