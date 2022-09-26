@@ -8,6 +8,14 @@
   background-color: whitesmoke;
 }
 
+.phonebook svg {
+  padding-top: 10px;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
 .phonebook h2 {
   margin: 10px 0;
   text-align: center;

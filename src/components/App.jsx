@@ -1,7 +1,6 @@
 import Phonebook from './Phonebook/Phonebook';
 
-function App() {
-
+const  App = () => {
   return (
     <>
       <Phonebook />

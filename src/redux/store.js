@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import contacts from './contacts';
-import filter from './filter';
+import contacts from './slices/contacts';
+import filter from './slices/filter';
 
 const rootReducer = {
   contacts,
@@ -9,7 +9,6 @@ const rootReducer = {
 
 const store = configureStore({
   reducer: rootReducer,
-//   devTools: process.env.NODE_ENV !== 'production',
 });
 
 export default store;
