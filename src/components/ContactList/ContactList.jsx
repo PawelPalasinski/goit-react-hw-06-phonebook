@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteContacts } from '../../redux/slices/contacts';
 import styles from './ContactList.module.css';
 
-const ContactList = () => {
+const ContactList = ({ children }) => {
   const filtersContacts = (contacts, filter) =>
     contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
@@ -18,22 +18,25 @@ const ContactList = () => {
   };
 
   return (
-    <div className={styles.contacts}>
-      <h2>Contacts</h2>
-      <ul>
-        {contactsList.map(({ name, number, id }) => (
-          <li key={id}>
-            <p>
-              <span>{name} : </span>
-              {number}
-            </p>
-            <button type="button" onClick={() => deleteItem(id)}>
-              ⛌
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <div className={styles.contacts}>
+        {children}
+        <h2>Contacts</h2>
+        <ul>
+          {contactsList.map(({ name, number, id }) => (
+            <li key={id}>
+              <p>
+                <span>{name} : </span>
+                {number}
+              </p>
+              <button type="button" onClick={() => deleteItem(id)}>
+                ⛌
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 

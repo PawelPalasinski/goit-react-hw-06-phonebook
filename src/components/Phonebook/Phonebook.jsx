@@ -15,14 +15,13 @@ const Phonebook = () => {
 
       {contacts.length > 0 ? (
         <ContactList>
-        <Filter />
+          <Filter />
         </ContactList>
       ) : (
         <NoContactsMessage />
       )}
-      
     </>
   );
-}
+};
 
 export default Phonebook;
